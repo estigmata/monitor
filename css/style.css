@@ -1,4 +1,5 @@
 @import 'https://fonts.googleapis.com/css?family=Ubuntu';
+@import 'https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css';
 @import './columns.css';
 
 body,
@@ -7,7 +8,7 @@ html {
   font-family: 'Ubuntu';
   font-size: 13px;
   margin: 0;
-  padding: 5px 0;
+  padding: 0;
   width: 100%;
 }
 
@@ -17,8 +18,26 @@ html {
   box-sizing: border-box;
 }
 
-label {
-  display: block;
+h1 {
+  font-size: 25px;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+h3 {
+  margin: 0;
+}
+
+h5 {
+  font-size: 13px;
+  margin: 10px 0 0 0;
+}
+
+header {
+  background-color: #21252B;
+  height: 45px;
+  margin-bottom: 10px;
 }
 
 .center {
@@ -26,6 +45,12 @@ label {
   border-radius: 3px;
   margin: 0 auto;
   width: 60%;
+}
+
+@media (max-width: 768px) {
+  .center {
+    width: 100%;
+  }
 }
 
 .left-panel {
@@ -37,7 +62,14 @@ label {
   border-radius: 5px;
   height: 35px;
   margin: 10px 0;
-  width: 250px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.form-group label,
+h5 {
+  display: block;
+  font-weight: bold;
 }
 
 .form-control:focus {
@@ -47,3 +79,117 @@ label {
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
+
+.btn-group {
+  display: inline-flex;
+  margin: 10px 0;
+  vertical-align: middle;
+}
+
+.btn-group>.btn:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-group>.btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-group > .btn {
+  flex: 0 1 auto;
+}
+
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.btn:hover {
+  color: #212529;
+  background-color: #e2e6ea;
+  border-color: #dae0e5;
+}
+
+.btn-red {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-red:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.action-group {
+  padding: 10px;
+  text-align: center;
+}
+
+.right-panel {
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.right-panel:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+fieldset { margin: 0; padding: 0; }
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+ float: right;
+}
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }
