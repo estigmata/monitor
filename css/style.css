@@ -1,0 +1,49 @@
+@import 'https://fonts.googleapis.com/css?family=Ubuntu';
+@import './columns.css';
+
+body,
+html {
+  height: 100%;
+  font-family: 'Ubuntu';
+  font-size: 13px;
+  margin: 0;
+  padding: 5px 0;
+  width: 100%;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+}
+
+.center {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.left-panel {
+  padding: 10px;
+}
+
+.form-group input {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  height: 35px;
+  margin: 10px 0;
+  width: 250px;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
