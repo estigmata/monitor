@@ -47,9 +47,17 @@ header {
   width: 60%;
 }
 
+.container {
+  padding: 10px;
+}
+
 @media (max-width: 768px) {
   .center {
     width: 100%;
+  }
+
+  .right-panel {
+    margin: 0 10px;
   }
 }
 
