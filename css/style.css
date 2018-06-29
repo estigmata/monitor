@@ -27,6 +27,8 @@ h1 {
 
 h3 {
   margin: 0;
+  padding: 5px;
+  text-align: center;
 }
 
 h5 {
@@ -88,26 +90,6 @@ h5 {
   box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }
 
-.btn-group {
-  display: inline-flex;
-  margin: 10px 0;
-  vertical-align: middle;
-}
-
-.btn-group>.btn:not(:last-child) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.btn-group>.btn:not(:first-child) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.btn-group > .btn {
-  flex: 0 1 auto;
-}
-
 .btn {
   display: inline-block;
   cursor: pointer;
@@ -156,7 +138,7 @@ h5 {
 .right-panel {
   background-color: #eee;
   border-radius: 5px;
-  padding: 20px;
+  padding: 10px;
 }
 
 .right-panel:after {
@@ -165,29 +147,49 @@ h5 {
   clear: both;
 }
 
-.vote-group {
-  margin-bottom: 10px;
+/*===[Radio Group]===*/
+
+.radio-group {
+  border: solid 1px #eee;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 10px 0;
+  overflow: hidden;
 }
 
-.vote-group:last-child {
+.radio-group input[type=radio],
+.vote-group input[type=radio] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+.radio-group label {
+  background-color: #f8f9fa;
+  color: #212529;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 11px;
+  padding: 10px;
+}
+
+.radio-group input[type=radio]:checked + label {
+  background-color: #dae0e5;
+  border-color: #bd2130;
+}
+
+.vote-group h5 {
   margin: 0;
 }
 
 .vote-group label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.vote-group a {
-  color: #ddd;
-  margin-right: 10px;
-}
-
-.vote-group a:hover {
-  color: #999;
-}
-
-.vote-group a i {
+  color: #ccc;
+  cursor: pointer;
+  display: inline-block;
   font-size: 19px;
+  padding: 10px;
+}
+
+.vote-group input[type=radio]:checked + label {
+  color: #666;
 }

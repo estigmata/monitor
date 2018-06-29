@@ -18,29 +18,37 @@
         <div class="left-panel">
           <div class="form-group">
             <label>Name</label>
-            <input class="form-control" type="text" />
+            <input class="form-control" name="name" type="text" />
           </div>
           <div class="form-group">
             <label>Address</label>
-            <input class="form-control" type="text" />
+            <input class="form-control" name="address" type="text" />
           </div>
           <div class="form-group">
             <label>Restaurant type</label>
-            <div class="btn-group" role="group">
-              <button type="button" class="btn btn-secondary">Family</button>
-              <button type="button" class="btn btn-secondary">Group</button>
-              <button type="button" class="btn btn-secondary">Couple</button>
-              <button type="button" class="btn btn-secondary">Individual</button>
-            </div>
+          </div>
+          <div class="radio-group">
+            <input id="family" name="restaurant-type" type="radio" value="Family" />
+            <label for="family">Family</label>
+            <input id="group" name="restaurant-type" type="radio" value="Group" />
+            <label for="group">Group</label>
+            <input id="couple" name="restaurant-type" type="radio" value="Couple" />
+            <label for="couple">Couple</label>
+            <input id="individual" name="restaurant-type" type="radio" value="Individual" />
+            <label for="individual">Individual</label>
           </div>
           <div class="form-group">
             <label>Food type</label>
-            <div class="btn-group" role="group">
-              <button type="button" class="btn btn-secondary">Grill</button>
-              <button type="button" class="btn btn-secondary">Fast Food</button>
-              <button type="button" class="btn btn-secondary">Traditional</button>
-              <button type="button" class="btn btn-secondary">Seafood</button>
-            </div>
+          </div>
+          <div class="radio-group">
+            <input id="grill" name="food-type" type="radio" value="Grill" />
+            <label for="grill">Grill</label>
+            <input id="fast-food" name="food-type" type="radio" value="Fast Food" />
+            <label for="fast-food">Fast Food</label>
+            <input id="traditional" name="food-type" type="radio" value="Traditional" />
+            <label for="traditional">Traditional</label>
+            <input id="seafood" name="food-type" type="radio" value="Seafood" />
+            <label for="seafood">Seafood</label>
           </div>
         </div>
       </div>
@@ -49,24 +57,32 @@
           <h3>Vote by you visit place</h3>
           <div class="container">
             <div class="vote-group">
-              <label>Environment</label>
-              <span><a href="#" title="Like it"><i class="mdi mdi-thumb-up"></i></a></span>
-              <span><a href="#" title="Dislike it"><i class="mdi mdi-thumb-down"></i></a></span>
+              <h5>Environment</h5>
+              <input id="environment-up" name="environment" type="radio" value="1" />
+              <label for="environment-up" class="mdi mdi-thumb-up"></label>
+              <input id="environment-down" name="environment" type="radio" value="0" />
+              <label for="environment-down" class="mdi mdi-thumb-down"></label>
             </div>
             <div class="vote-group">
-              <label>Kidness</label>
-              <span><a href="#" title="Like it"><i class="mdi mdi-thumb-up"></i></a></span>
-              <span><a href="#" title="Dislike it"><i class="mdi mdi-thumb-down"></i></a></span>
+              <h5>Kidness</h5>
+              <input id="kidness-up" name="kidness" type="radio" value="1" />
+              <label for="kidness-up" class="mdi mdi-thumb-up"></label>
+              <input id="kidness-down" name="kidness" type="radio" value="0" />
+              <label for="kidness-down" class="mdi mdi-thumb-down"></label>
             </div>
             <div class="vote-group">
-              <label>Taste</label>
-              <span><a href="#" title="Like it"><i class="mdi mdi-thumb-up"></i></a></span>
-              <span><a href="#" title="Dislike it"><i class="mdi mdi-thumb-down"></i></a></span>
+              <h5>Taste</h5>
+              <input id="taste-up" name="taste" type="radio" value="1" />
+              <label for="taste-up" class="mdi mdi-thumb-up"></label>
+              <input id="taste-down" name="taste" type="radio" value="0" />
+              <label for="taste-down" class="mdi mdi-thumb-down"></label>
             </div>
             <div class="vote-group">
-              <label>Price</label>
-              <span><a href="#" title="Like it"><i class="mdi mdi-thumb-up"></i></a></span>
-              <span><a href="#" title="Dislike it"><i class="mdi mdi-thumb-down"></i></a></span>
+              <h5>Price</h5>
+              <input id="price-up" name="price" type="radio" value="1" />
+              <label for="price-up" class="mdi mdi-thumb-up"></label>
+              <input id="price-down" name="price" type="radio" value="0" />
+              <label for="price-down" class="mdi mdi-thumb-down"></label>
             </div>
           </div>
         </div>
@@ -74,8 +90,32 @@
     </div>
 
     <div class="action-group">
-      <button class="btn btn-red">Register Restaurant</button>
+      <button class="btn btn-red" onclick="myPost()">Register Restaurant</button>
     </div>
   </div>
+  <script type="text/javascript">
+  function myPost() {
+    var data = {};
+    data.name = document.getElementsByName('name')[0].value;
+    data.address = document.getElementsByName('address')[0].value;
+    data.restaurant = document.getElementsByName('restaurant-type')[0].value;
+    data.food = document.getElementsByName('food-type')[0].value;
+    data.environment = document.getElementsByName('environment')[0].value;
+    data.kidness = document.getElementsByName('kidness')[0].value;
+    data.taste = document.getElementsByName('taste')[0].value;
+    data.price = document.getElementsByName('price')[0].value;
+    var json = JSON.stringify(data);
+    var url = 'http://localhost/56947/api/restaurants';
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-type','application/json; charset=utf-8');
+    xhr.onreadystatechange = function() {//Call a function when the state changes.
+        if(xhr.readyState == 4 && xhr.status == 200) {
+            alert(xhr.responseText);
+        }
+    }
+    xhr.send(json);
+  }
+  </script>
 </body>
 </html>
